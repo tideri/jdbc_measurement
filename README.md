@@ -31,9 +31,5 @@ Mainly following 2 test case will be done and you can compare the outputs
 
 |test case|description|
 |--------|--------|
-|case 1|Case 1 should be faster than case 2. This case performs setPoolable(false) to the "long" queries.
-All the "long" queries won't be put into the cache and  won't pushed "short" queries away from the cache.
-"Short" queries can use cached queries (and will hopefully be faster). |
-|case 2|Case 2 should be slower than case 1. This case performs setPoolable(true) to the "long" queries.
-All the "long" queries will be put into the cache and will push "short" queries away from the cache.
-"Short" queries cannot use cached queries (and will hopefully be slower).|
+|case 1|Case 1 should be faster than case 2. This case performs setPoolable(false) to the "long" queries.<br>All the "long" queries won't be put into the cache and  won't pushed "short" queries away from the cache.<br>"Short" queries can use cached queries (and will hopefully be faster). |
+|case 2|Case 2 should be slower than case 1. This case performs setPoolable(true) to the "long" queries.<br>All the "long" queries will be put into the cache and will push "short" queries away from the cache.<br>"Short" queries cannot use cached queries (and will hopefully be slower).|
