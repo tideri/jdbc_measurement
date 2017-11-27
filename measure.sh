@@ -1,6 +1,5 @@
 #!/bin/bash
-# You need to do 'git checkout dev' in jdbc directory
-# If you want to display debug messages, please switch your JDBC branch to pstmtchache
+# You need to apply setPoolable() patch beforehand. 
 
 set -eu
 
@@ -14,34 +13,32 @@ LOG_FILE=${LOG_DIR}/measure_setPoolable_false.log
 CacheQueries=100000 # default=256
 CacheSizeMiB=1   # default=5
 Threshold=5      # default=5
-LongQueryCount=(2)
+LongQueryCount=2
 IsPoolable=false
 
-for n in ${LongQueryCount[@]};do
-    java ${EXE_FILE} ${n} ${CacheQueries} ${CacheSizeMiB} ${Threshold} ${IsPoolable} 2>&1|tee -a ${LOG_FILE}
-done
+java ${EXE_FILE} ${LongQueryCount} ${CacheQueries} ${CacheSizeMiB} ${Threshold} ${IsPoolable} 2>&1|tee -a ${LOG_FILE}
+
 
 ###################################################################################
 LOG_FILE=${LOG_DIR}/measure_setPoolable_true.log
 CacheQueries=100000 # default=256
 CacheSizeMiB=1   # default=5
 Threshold=5      # default=5
-LongQueryCount=(2)
+LongQueryCount=2
 IsPoolable=true
 
-for n in ${LongQueryCount[@]};do
-    java ${EXE_FILE} ${n} ${CacheQueries} ${CacheSizeMiB} ${Threshold} ${IsPoolable} 2>&1|tee -a ${LOG_FILE}
-done
+java ${EXE_FILE} ${LongQueryCount} ${CacheQueries} ${CacheSizeMiB} ${Threshold} ${IsPoolable} 2>&1|tee -a ${LOG_FILE}
+
 
 ###################################################################################
 LOG_FILE=${LOG_DIR}/measure_cache_on.log
 CacheQueries=100000 # default=256
 CacheSizeMiB=1   # default=5
 Threshold=5      # default=5
-LongQueryCount=(2)
+LongQueryCount=0
 IsPoolable=true
 
-java ${EXE_FILE} 0 ${CacheQueries} ${CacheSizeMiB} ${Threshold} ${IsPoolable} 2>&1|tee -a ${LOG_FILE}
+java ${EXE_FILE}  ${CacheQueries} ${CacheSizeMiB} ${Threshold} ${IsPoolable} 2>&1|tee -a ${LOG_FILE}
 
 
 ###################################################################################
@@ -53,8 +50,7 @@ Threshold=5      # default=5
 LongQueryCount=(2)
 IsPoolable=true
 
-for n in ${LongQueryCount[@]};do
-    java ${EXE_FILE} ${n} ${CacheQueries} ${CacheSizeMiB} ${Threshold} ${IsPoolable} 2>&1|tee -a ${LOG_FILE}
-done
+java ${EXE_FILE} ${LongQueryCount} ${CacheQueries} ${CacheSizeMiB} ${Threshold} ${IsPoolable} 2>&1|tee -a ${LOG_FILE}
+
 
 done
