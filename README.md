@@ -36,15 +36,14 @@ Mainly following 2 test case will be done and you can compare the outputs
 
 ## Result example
 Here is an example of the outputs of case 1 and case 2. These are the averages.
-- case 1
-
-|time|TPS|preparedStatementCacheQueries|preparedStatementCacheSizeMiB|IsPoolable|
-|---|---|---|---|---|
-|360.682|1339.782|100000|1|true|		
-
-- case 2
+- case 1 (Long queries were not cached.)
 
 |time|TPS|preparedStatementCacheQueries|preparedStatementCacheSizeMiB|IsPoolable|
 |---|---|---|---|---|
 |80.262|6046.811|100000|1|true|
 
+- case 2 (Long queries were cached.)
+
+|time|TPS|preparedStatementCacheQueries|preparedStatementCacheSizeMiB|IsPoolable|
+|---|---|---|---|---|
+|360.682|1339.782|100000|1|true|		
