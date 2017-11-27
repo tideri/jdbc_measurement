@@ -6,17 +6,25 @@ This repostiry is made to give peformance evidence against [pgJDBC issue 687](ht
 Following steps are performed:
 1. Set up properties :preparedStatementCacheSizeMiB=1 and argument of setPoolable()
 1. Run short queries to fill in the cache
-1. Run long queries
+1. Run long queries in 2 cases
    - Case 1:if setPoolable(false), then short queries are still cached
    - Case 2:if setPoolable(true), then long queries are cached and pushed short queris away
 1. Again run short queries and measure the time and throuput
+
+## Details of queries
+### short queries
+- Used [DBT-3 queries](https://sourceforge.net/p/osdldbt/dbt3/ci/master/tree/queries/pgsql/) as shot queries. 
+### long queries
+- Used [DBT-3 queries](https://sourceforge.net/p/osdldbt/dbt3/ci/master/tree/queries/pgsql/) added longer comments 
+
+### long queries
 
 ## Prepartion
 
 - Apply patch which was attached to [pgJDBC issue 687](https://github.com/pgjdbc/pgjdbc/issues/687). and build JDBC.
 - Build `TestMeasure.java`
 - Use (DBT-3(TPC-H) database)[https://sourceforge.net/p/osdldbt/dbt3/ci/master/tree/]
-  - I just used DDL of DBT-3. In other words, no data was acutually stored in the database to purely compare the effect of statement cache (setPoolable(true/false) of "long" queries.)
+  - I just used DDL of DBT-3. In other words, no data was acutually stored in the database to purely compare the effect of statement cache (setPoolable(true/false) of "long" queries.
 
 ## Usage
 
