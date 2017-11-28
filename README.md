@@ -48,7 +48,7 @@ Here is an example of the outputs of case 1 and case 2. These are the averages.
 
 |time|TPS|preparedStatementCacheQueries|preparedStatementCacheSizeMiB|IsPoolable|
 |---|---|---|---|---|
-|80.262|6046.811|100000|1|true|
+|80.262|6046.811|100000|1|false|
 
 - case 2 (Long queries were cached.)
 
