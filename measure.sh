@@ -4,6 +4,11 @@
 set -eu
 
 LOG_DIR=$(dirname ${0})/log
+
+if [ ! -d ${LOG_DIR} ]; then
+    mkdir ${LOG_DIR}
+fi
+
 EXE_FILE=TestMeasure
 
 for num in `seq 1 1000`
