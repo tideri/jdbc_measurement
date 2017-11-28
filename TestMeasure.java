@@ -50,10 +50,9 @@ public class TestMeasure {
 			Connection con = DriverManager.getConnection(url, props);
 			TestMeasure testMeasure = new TestMeasure(con);
 			/* Fill up the cache */
-			for (int i = 0; i < 10; i++) {
-				for (select_count = 0; select_count < fillinQueryCount; select_count++) {
-					testMeasure.runShortQuery(select_count);
-				}
+		
+	       		for (select_count = 0; select_count < fillinQueryCount; select_count++) {
+       				testMeasure.runShortQuery(select_count);
 			}
 			/* Run large queries. runLongQuery() internally sets up true/false against the setPoolable()'s arg*/
 			for (int i = 0; i < 10; i++){
